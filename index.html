@@ -94,11 +94,14 @@
 					mouseover: highlightFeature,
 					mouseout: resetHighlight,
 					click: select,
-					dblclick: map.zoomIn
+					dblclick: zoomInABit
 				});
 			}
 			
-			
+			function zoomInABit() {
+				map.zoomIn();
+				click_type = "double";
+			}
 			
 			function style(feature) {
 				return {
@@ -134,19 +137,24 @@
 
 			
 			function select(event) {
-				console.log(event)
-				var id = event.target._leaflet_id;
-				if (id == mun) { 									// If you click on the already selected polygon	
-					event.target.setStyle({fillColor: 'orange'}); 	// deselect it
-					mun = NO_MUN_SELECTED;							// And reset global flag to empty.
-				} else {											// If the selected polygon is a new one
-					if (mun != NO_MUN_SELECTED) {					// 	and if previously there was one selected
-						geojson._layers[mun].setStyle({fillColor: 'orange'});											// 	clear that previous one. 	
+				setTimeout(function() {
+					if (click_type == "single") {
+						console.log(event)
+						var id = event.target._leaflet_id;
+						if (id == mun) { 									// If you click on the already selected polygon	
+							event.target.setStyle({fillColor: 'orange'}); 	// deselect it
+							mun = NO_MUN_SELECTED;							// And reset global flag to empty.
+						} else {											// If the selected polygon is a new one
+							if (mun != NO_MUN_SELECTED) {					// 	and if previously there was one selected
+								geojson._layers[mun].setStyle({fillColor: 'orange'});											// 	clear that previous one. 	
+							};
+							event.target.setStyle({fillColor: 'blue'});		// Then set the new one. 
+							mun = id; 	
+						};
+					} else {
+						click_type = "single"
 					};
-					event.target.setStyle({fillColor: 'blue'});		// Then set the new one. 
-					mun = id; 	
-				};
-				
+				}, 200);
 			
 			}
 			

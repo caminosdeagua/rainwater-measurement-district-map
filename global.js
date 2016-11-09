@@ -17,6 +17,7 @@ var NO_MUN_SELECTED = -1;
 var mun = NO_MUN_SELECTED; 								// holds the user's selected municipality
 var geojson; 											// global to hold the geojson dataset
 	
+var click_type = "single"; 										// global to parse single and double clicks
 // MAYBE THE STUFF BELOW IS UNNECESSARY... //
 										
 										
