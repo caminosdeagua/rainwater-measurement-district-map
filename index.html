@@ -47,7 +47,7 @@
 					minZoom: MAP_MIN_ZOOM,
 					maxZoom: MAP_MAX_ZOOM,
 					attributionControl: true,
-					fullscreenControl:true
+					fullscreenControl: false
 				});	
 				map.attributionControl.setPrefix(CARTO_ATTRIBUTION);
 			}
@@ -93,9 +93,12 @@
 				layer.on({
 					mouseover: highlightFeature,
 					mouseout: resetHighlight,
-					click: select
+					click: select,
+					dblclick: map.zoomIn
 				});
 			}
+			
+			
 			
 			function style(feature) {
 				return {
