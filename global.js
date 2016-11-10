@@ -5,10 +5,10 @@ var map;								// initialize the variable to hold the map
 var MAP_CENTER = [21.05,-100.65];		// Set all map starting parameters
 var MAP_MIN_ZOOM = 2;
 var MAP_MAX_ZOOM = 18;
-var MAP_INIT_ZOOM = 10;
+var MAP_INIT_ZOOM = 8;
 
 
-var STAMEN_MAP_TYPE = "toner";		// Set which type of stamen map we want as a base layer.
+var STAMEN_MAP_TYPE = "terrain";		// Set which type of stamen map we want as a base layer.
 										// 	options include: "terrain", "watercolor", and "toner"	
 
 var DATA_URL = "https://dl.dropboxusercontent.com/s/w2le11pok7c781e/munis.geojson";					
