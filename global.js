@@ -11,7 +11,7 @@ var MAP_INIT_ZOOM = 10;
 var STAMEN_MAP_TYPE = "toner";		// Set which type of stamen map we want as a base layer.
 										// 	options include: "terrain", "watercolor", and "toner"	
 
-var DATA_URL = "https://dl.dropboxusercontent.com/s/l635tyml5yxjbn5/atotonilco.geojson";					
+var DATA_URL = "https://dl.dropboxusercontent.com/s/w2le11pok7c781e/munis.geojson";					
 	
 var NO_MUN_SELECTED = -1;	
 var mun = NO_MUN_SELECTED; 								// holds the user's selected municipality
