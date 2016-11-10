@@ -38,16 +38,15 @@ function doStuff() {
 		url: DATA_URL,
 		dataType: 'json',
 		success: function (data) {
-			//console.log(data)
 			geojson = L.geoJson(data, {
 				style: style,
 				onEachFeature: onEachFeature
 			})						
 			.on('error', function(er) {
-				//console.log(er)
+				console.log(er)
 			})					
 			.addTo(map);
-			console.log(geojson)
+	
 		},
 		error: function (er) {
 			console.log("the ajax called returned the "+er+ "error...");
@@ -112,24 +111,23 @@ function resetHighlight(e) {
 
 
 function select(event) {
-	setTimeout(function() {
-		if (click_type == "single") {
-			console.log(event)
-			var id = event.target._leaflet_id;
-			if (id == mun) { 									// If you click on the already selected polygon	
-				event.target.setStyle({fillColor: 'orange'}); 	// deselect it
-				mun = NO_MUN_SELECTED;							// And reset global flag to empty.
-			} else {											// If the selected polygon is a new one
-				if (mun != NO_MUN_SELECTED) {					// 	and if previously there was one selected
-					geojson._layers[mun].setStyle({fillColor: 'orange'});											// 	clear that previous one. 	
-				};
-				event.target.setStyle({fillColor: 'blue'});		// Then set the new one. 
-				mun = id; 	
+	if (click_type == "single") {
+		var id = event.target._leaflet_id;
+		if (id == mun) { 									// If you click on the already selected polygon	
+			event.target.setStyle({fillColor: 'orange'}); 	// deselect it
+			mun = NO_MUN_SELECTED;							// And reset global flag to empty.
+		} else {											// If the selected polygon is a new one
+			if (mun != NO_MUN_SELECTED) {					// 	and if previously there was one selected
+				geojson._layers[mun].setStyle({fillColor: 'orange'});											// 	clear that previous one. 	
 			};
-		} else {
-			click_type = "single"
+			event.target.setStyle({fillColor: 'blue'});		// Then set the new one. 
+			mun = id; 	
 		};
-	}, 200);
+	} else {
+		click_type = "single"
+	}
+	console.log(geojson._layers[mun].feature.properties.NOMGEO);
+	
 
 }
 			
