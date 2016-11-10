@@ -2,7 +2,7 @@
 
 var map;								// initialize the variable to hold the map
 
-var MAP_CENTER = [21.55,-100.65];		// Set all map starting parameters
+var MAP_CENTER = [21.2,-100.65];		// Set all map starting parameters
 var MAP_MIN_ZOOM = 2;
 var MAP_MAX_ZOOM = 18;
 var MAP_INIT_ZOOM = 8;
