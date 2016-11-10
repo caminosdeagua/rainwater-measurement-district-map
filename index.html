@@ -9,11 +9,11 @@
 		<script type="text/javascript" src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js"></script><!--Include Stamen JavaScript to get basemap tiles-->
 		
 		<!-- Include the include files: global vars and display text -->
-		<script src="global.js" type="text/javascript" /></script>
-		<script src="display_English.js" type="text/javascript"></script>
+		<script src="rainmap_global.js" type="text/javascript" /></script>
+		<script src="rainmap_display_English.js" type="text/javascript"></script>
 		
 		<!-- Include the CSS styling -->
-		<link rel="stylesheet" type="text/css" href="map_styles.css"></link>
+		<link rel="stylesheet" type="text/css" href="rainmap_styles.css"></link>
 		
 		<!-- Include both libraries for plotting stamen basemaps --> 
 		<script type="text/javascript" src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js"></script><!--Include Stamen JavaScript to get basemap tiles-->
@@ -23,6 +23,8 @@
 		<link href='https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css' rel='stylesheet' />
 
 	</head>
+	
+	
 	<body onload="init();"> 	<!-- what to do when the page loads -->
 		<div id='WaterMap'> 	<!-- creates the div element that holds the map -->
 		</div>
@@ -69,13 +71,13 @@
 					url: DATA_URL,
 					dataType: 'json',
 					success: function (data) {
-						console.log(data)
+						//console.log(data)
 						geojson = L.geoJson(data, {
 							style: style,
 							onEachFeature: onEachFeature
 						})						
 						.on('error', function(er) {
-							console.log(er)
+							//console.log(er)
 						})					
 						.addTo(map);
 						console.log(geojson)
